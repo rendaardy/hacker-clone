@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>{{ user.username }} Profile</h3>
+
+<h5>Posts</h5>
+<hr>
+{% for post in posts %}
+<div>
+  <a href="/post/{{ post.id }}">{{ post.title }}</a>
+</div>
+{% endfor %}
+
+<h5>Comments</h5>
+<hr>
+{% for comment in comments %}
+<div>
+  <a href="/post/{{ comment.post_id }}">{{ comment.comment }}</a>
+  <br>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table>
+  <tr>
+    <td>
+      <a href="{{ post.link }}">{{ post.title }}</a>
+      <br>
+      <small>submitted by <a href="/user/{{ user.username }}">{{ user.username }}</a></small>
+      - {{ post.created_at }}
+    </td>
+  </tr>
+</table>
+
+<form action="" method="POST">
+  <div>
+    <label for="comment">Comment</label>
+    <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+  </div>
+  <br>
+  <button type="submit">Submit</button>
+</form>
+
+{% for comment_user in comments %}
+{% set comment = comment_user[0] %}
+{% set user = comment_user[1] %}
+<div>
+  {{ comment.comment }}
+  <br>
+  <small>by {{ user.username }}</small>
+  <hr>
+</div>
+{% endfor %}
+{% endblock %}
